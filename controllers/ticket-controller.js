@@ -29,14 +29,10 @@ function getticket() {
 function updateticket() {
   try {
     const {tickettype, tstatus, ttitle, tdiscription, tattachment, tallocatedid, tremarks, tcreatedby, tmodifiedby, ticketid,} = req.body;
-
     if (!ticketid) {
       return res.status(400).send("Ticket ID is required for updating");
     }
-
-    const query =
-      "UPDATE ticket SET tickettype =?, tstatus =?, ttitle =?, tdiscription =?, tattachment =?, tallocatedid =?, tremarks =?, tcreatedby =?, tmodifiedby =? WHERE ticketid =?";
-
+    const query = "UPDATE ticket SET tickettype =?, tstatus =?, ttitle =?, tdiscription =?, tattachment =?, tallocatedid =?, tremarks =?, tcreatedby =?, tmodifiedby =? WHERE ticketid =?";
     db.query(
       query,[ tickettype, tstatus, ttitle, tdiscription, tattachment, tallocatedid, tremarks, tcreatedby, tmodifiedby, ticketid,],(err, result) => {
         if (err) throw err;
