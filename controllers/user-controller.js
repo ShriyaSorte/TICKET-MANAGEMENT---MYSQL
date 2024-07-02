@@ -20,11 +20,17 @@ function adduser(req,res){
 }
 
 function getuser(){
-    
+    const query = "SELECT * FROM user";
+  db.query(query, (err, result) => {
+    if (err) {
+      throw err;
+    }
+    res.send(result);
+  });
 }
 
 function updateuser(){
-
+    
 }
 function deleteuser(){
 
